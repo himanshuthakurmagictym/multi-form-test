@@ -1,0 +1,73 @@
+.logo{
+    text-align:center;
+}
+
+.steps{
+    display: flex;
+    justify-content:space-between;
+    /* align-items: center; */
+    position: relative; 
+    margin-bottom: 50px;  
+}
+
+.step{
+    width:55px;
+    height: 55px;
+    background:white;
+    border:1px solid rgb(9, 158, 250);
+    border-radius:50%;
+    text-align: center;
+    padding:9px;
+    font-size:25px;
+    font-weight: bold;
+    color:rgb(9, 158, 250);
+    margin-bottom: 10px;
+}
+
+.progress{
+    position: absolute;
+    width: 99%;
+    z-index: -1;
+    top: 20%;
+    background-color:blue;
+    height: 4%!important;
+}
+
+.stepDetails{
+    text-align: center;
+    width:60px;  
+       
+}
+.stepBody{
+    font-size: 9px; 
+    color:gray;
+    font-weight: bold;
+  
+    text-align: center;
+}
+.stepheading{
+    font-size: 16px; 
+    font-weight: bold;
+    color:gray;
+    text-align: center;
+}
+.activeStep{
+    background-color: rgb(9, 158, 250);
+    color:white;
+    
+}
+
+  /* For Firefox */
+  progress::-moz-progress-bar {
+    background: rgb(9, 158, 250);
+}
+
+/* For Chrome or Safari */
+progress::-webkit-progress-value {
+    background: rgb(9, 158, 250);
+}
+
+/* For IE10 */
+progress {
+    background: rgb(9, 158, 250);
+}
