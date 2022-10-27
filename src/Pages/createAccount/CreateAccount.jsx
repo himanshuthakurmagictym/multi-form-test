@@ -18,7 +18,11 @@ function CreateAccount() {
     avatar:'',
     confirmPassword:''
   })
-  const [formErrors, setFormErrors] = useState({});
+  const [formErrors, setFormErrors] = useState({ name:'',
+  email:'',
+  password:'',
+  avatar:'',
+  confirmPassword:''});
   const dispatch = useDispatch();
   const {isLoading, isSuccess, isError} = useSelector(state => state.auth);
 
@@ -29,7 +33,7 @@ function CreateAccount() {
      
     }
     if(isError){
-      toast.success("Error has Occur ", { autoClose: 2000 });
+      toast.error("Error has Occur ", { autoClose: 2000 });
     }
   },[isSuccess, isError])
 
@@ -60,6 +64,8 @@ function CreateAccount() {
   const handleSubmit = ()=>{
      dispatch(signup(formdata)); 
   }
+
+  
 
   return (
     <div className="container mb-5">

@@ -1,10 +1,17 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
+import {ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function AccountForm({nextstep, handleChange, handleImage, formErrors}) {
   const [avator, setAvator] = useState("")
   const onSubmit = (e)=>{
       e.preventDefault();
-      nextstep();
+      if(!avator){
+        toast.error("please upload Avatar", { autoClose: 2000 });
+      }else{
+        nextstep();
+      }
+      
   }
 const handleImageFile = (e)=>{
   handleImage(e);
@@ -21,23 +28,24 @@ const handleImageFile = (e)=>{
               <form onSubmit={onSubmit}>
                 <div className="row">
                 <div className="col-md-3 text-center">
-                <input type="file" accept="image/png, image/gif, image/jpeg" name="avatar"  className='fileuploader' onChange={handleImageFile}/>
-                <img src={avator?URL.createObjectURL(avator):`./Assets/Avatar.png`} width="170px" height="170px" />
+                <input type="file" accept="image/png, image/gif, image/jpeg"  name="avatar"  className='fileuploader' onChange={handleImageFile}/>
+                <img src={avator?URL.createObjectURL(avator):`./Assets/Avatar.png`} width="170px" height="170px" alt="image"/>
                 <p className='uploaderHeading'>Upload</p>
                
                 </div>
                   <div className="col-md-4">
                       <div className="form-group mb-3">
-                        <label className='form-label'>Name</label>
+                        <label className='form-label' htmlFor="name">Name</label>
                         <input type="text" placeholder='Name' className='form-control'
+                       id="name"
                         name="name"
                         onChange={handleChange}
                         required
                         />
                       </div>
                       <div className="form-group mb-3">
-                        <label className='form-label'>E-mail</label>
-                        <input type="email" placeholder='E-mail' 
+                        <label className='form-label' htmlFor="email">E-mail</label>
+                        <input type="email" placeholder='E-mail' id="email"
                           name="email"
                           required
                          onChange={handleChange}className='form-control'/>
@@ -64,7 +72,7 @@ const handleImageFile = (e)=>{
                          required
                          className='form-control'/>
                        <div className='error'>
-                       {formErrors.password}
+                       {formErrors?.password}
                        </div>
                       </div>
                       <div className='submitButton'>
