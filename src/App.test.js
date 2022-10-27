@@ -11,5 +11,7 @@ test('renders learn react link', () => {
     </Provider>
   );
 
+
   expect(getByText(/CREATE ACCOUNT/i)).toBeInTheDocument();
+
 });
